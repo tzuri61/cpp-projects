@@ -2,7 +2,7 @@
 #include "gameboard.h"
 
 int main(){
-    int playerturn = 0;
+    int playerturn = 1;
 
     gameboard b;
 
