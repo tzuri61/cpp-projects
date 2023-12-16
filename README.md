@@ -1,3 +1,39 @@
 ﻿# Cpp-Projects
 
-Hier befinden sich Codes aus pg1 :)
+Hier befinden sich Codes (es sind tränen geflossen)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Pain
+(╯°□°）╯︵ ┻━┻
