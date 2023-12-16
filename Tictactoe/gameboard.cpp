@@ -146,9 +146,10 @@ bool gameboard::checkfields()
     {
         for(int j = 0; j < 3; j++)
         {
-            counter++;
+            
             if(board[i][j] != '.')
             {
+                counter++;
                 if(counter == 9)
                 {
                     return true;
