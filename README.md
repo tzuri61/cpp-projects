@@ -1,12 +1,11 @@
 ﻿# Cpp-Projects
 
-Hier befinden sich Codes (es sind tränen geflossen)
+Hier befinden sich C++ Codes (es sind tränen geflossen)
 
-# In Planung:
--Snake
--TicTacToe v2 mit Klassen
--einige Altklausuren
+## In Planung(keine feste Reihenfolge):
+1. Snake
+2. TicTacToe v2 mit Klassen
+3. einige Altklausuren
 
-Pain
 
 (╯°□°）╯︵ ┻━┻
