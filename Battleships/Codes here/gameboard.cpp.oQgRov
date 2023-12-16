@@ -1,0 +1,203 @@
+#include "gameboard.h"
+#include <random>
+
+GameBoard::GameBoard()
+{
+    for(int i = 0; i < 10; i++)
+    {
+        for(int j = 0; j < 10; j++)
+        {
+            m_enemyBoard[i][j] = '.';
+        }
+    }
+}
+
+void GameBoard::printBoard()
+{
+    for(int i = 0; i < 10; i++)
+    {
+        for(int j = 0; j < 10; j++)
+        {
+            bool found = false;
+
+            for(int k = 0; k < (int)m_ships.size(); k++)
+            {
+                if(m_ships[k].hasPartIn(i, j))
+                {
+                    if(!m_ships[k].getPartIn(i, j).isDamaged())
+                    {
+                        cout << k + '0';
+                    }
+                    else if(m_ships[k].isSunk())
+                    {
+                        cout << 'S';
+                    }
+                    else
+                    {
+                        cout << 'X';
+                    }
+                    found = true;
+                    break;
+                }
+            }
+            if(!found)
+            {
+                cout << '.';
+            }
+        }
+        cout << endl;
+    }
+}
+
+void GameBoard::printEnemyBoard()
+{
+    for(int i = 0; i < 10; i++)
+    {
+        for(int j = 0; j < 10; j++)
+        {
+            switch(m_enemyBoard[i][j])
+            {
+                case '.':
+                    cout << ". ";
+                case 'X':
+                    cout << "X ";
+                case 'O':
+                    cout << "O";
+                default:
+                    break;
+            }
+        }
+        cout << endl;
+    }
+}
+
+bool GameBoard::hit(int row, int col)
+{
+    for(int i = 0; 0 < (int)m_ships.size(); i++)
+    {
+        if(m_ships[i].hasPartIn(row, col))
+        {
+            m_ships[i].getPartIn(row, col).setDamaged();
+            return true;
+        }
+    }
+    return false;
+}
+
+void GameBoard::mark(int row, int col, bool wasHit)
+{
+    if (wasHit)
+    {
+        m_enemyBoard[row][col] = 'X';
+        cout << "\nTREFFER!" << endl;
+    }
+    else
+    {
+        m_enemyBoard[row][col] = 'O';
+        cout << "\nWASSER!" << endl;
+    }
+}
+
+int getRandom(int lower, int upper)
+{
+    std::uniform_int_distribution<int> dist(lower, upper);
+    return dist(rd);
+}
+/*
+void GameBoard::randomPlaceShips()
+{
+    int row = getRandom(0, 9);
+    int col = getRandom(0, 9);
+    int direction = getRandom(0, 3);
+    int setRow = row;
+    int setCol = col;
+
+    bool isShipPlaced = false;
+    bool isFieldFree = true;
+    bool is = true;
+
+    while(true)
+    {
+        for(int i = 0; 0 < 5; i++)  //erste schleife geht 5 felder durch
+        {
+            isFieldFree = true; //zum prüfen
+
+            for(int j = 0; j < (int)m_ships.size(); j++) //zweite schleife prüft ob das feld besetzt ist
+            {
+                    if(m_ships[j].hasPartIn(row, col)) //die prüfung
+                    {
+                        isFieldFree = false;
+                        break; // break wenn ein schiff da ist
+                    }
+            }
+            if(isShipPlaced)
+            switch(direction) //bewegt das feld um eins in die richtung des schiffes
+            {
+            case 0:
+                    row--;
+                    break;
+            case 1:
+                    col++;
+                    break;
+            case 2:
+                    row++;
+                    break;
+            case 3:
+                    col--;
+                    break;
+            }
+        }
+
+
+
+
+
+        if(isShipPlaced)
+        {
+            break;
+        }
+    }
+
+
+
+
+}*/
+
+void GameBoard::randomPlaceShips()
+{
+    int directionrollDreadnought = getRandom(0,3);
+    int rowDreadnought = getRandom(0,9);
+    int colDreadnought = getRandom(0,9);
+
+    int directionrollCruiser1 = getRandom(0,3);
+
+
+
+    int directionrollCruiser2 = getRandom(0,3);
+
+    int directionrollDestroyer1 = getRandom(0,3);
+    int directionrollDestroyer2 = getRandom(0,3);
+    int directionrollDestroyer3 = getRandom(0,3);
+
+    int directionrollSubmarine1 = getRandom(0,3);
+    int directionrollSubmarine2 = getRandom(0,3);
+    int directionrollSubmarine3 = getRandom(0,3);
+    int directionrollSubmarine4 = getRandom(0,3);
+
+
+
+
+    for(int i = 0; i < 5; i++)
+    {
+        for(int j = 0; j < 5; j++){
+
+            if(directionrollDreadnought)
+            m_ships[i] = Ship(rowDreadnought,colDreadnought,5,directionrollDreadnought)
+        }
+    }
+}
+
+
+//randomPlaceShips kann auch mit switch case gelöst werden
+//statt den for schleifen für die verschiedenen Schiffe
+//es bedarf allerdings einiger tests
