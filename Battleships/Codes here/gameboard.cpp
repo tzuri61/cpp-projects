@@ -49,7 +49,11 @@ void GameBoard::printBoard()
 
                     for (int k = 0; k < (int) m_ships.size(); k++) {
                         if (m_ships[k].hasPartIn(i, j)) {
-                            if (!m_ships[k].getPartIn(i, j).isDamaged())
+                            if(m_ships[k].isSunk())
+                            {
+                                cout << "S" << " ";
+                            }
+                            else if(!m_ships[k].getPartIn(i, j).isDamaged())
                             {
                                 if(k < 9)
                                 {
@@ -61,10 +65,7 @@ void GameBoard::printBoard()
                                 }
 
                             }
-                            else if (m_ships[k].isSunk())
-                            {
-                                cout << 'S' << " ";
-                            } else
+                            else
                             {
                                 cout << 'X' << " ";
                             }

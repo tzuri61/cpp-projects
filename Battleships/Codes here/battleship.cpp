@@ -55,6 +55,8 @@ void Battleship::play()
                 cout << m_players[turnOfPlayer].getName() << " won!" << endl;
                 break;
             }
+            turnOfPlayer = enemy;
+            enemy = (turnOfPlayer +1) % 2;
         }
         else
         {
