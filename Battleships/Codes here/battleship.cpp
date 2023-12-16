@@ -65,11 +65,11 @@ void Battleship::play()
         }
     }
 
-    cout << turnOfPlayer << "s Statistik:" << endl
+    cout << m_players[turnOfPlayer].getName() << "s Statistik:" << endl
          << "Verlorene Spiele: " << m_players[turnOfPlayer].getGamesLost() << endl
          << "Gewonnene Spiele: " << m_players[turnOfPlayer].getGamesWon() << endl;
 
-    cout << enemy << "s Statistik:" << endl
+    cout << m_players[enemy].getName() << "s Statistik:" << endl
          << "Verlorene Spiele: " << m_players[enemy].getGamesLost() << endl
          << "Gewonnene Spiele: " << m_players[enemy].getGamesWon() << endl;
 
