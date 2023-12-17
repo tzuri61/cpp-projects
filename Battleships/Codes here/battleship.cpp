@@ -36,11 +36,19 @@ void Battleship::play()
 
         m_boards[turnOfPlayer].printBoard();
 
-        cout << "Enter coordinates: " << endl;
-        cout << "row=";
-        std::cin >> row;
-        cout << "column=";
-        std::cin >> col;
+        do
+        {
+            cout << "Enter coordinates: " << endl;
+            cout << "row=";
+            std::cin >> row;
+            cout << "column=";
+            std::cin >> col;
+            if(row > 9 || col > 9 || row < 0 || col < 0)
+            {
+                cout << "\nno...try again..." << endl;
+            }
+        }
+        while(row > 9 || col > 9 || row < 0 || col < 0);
         bool hit = m_boards[enemy].hit(row, col);
 
         m_boards[turnOfPlayer].mark(row, col, hit);
